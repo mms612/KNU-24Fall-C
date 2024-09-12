@@ -25,8 +25,12 @@ int main() {
 	else if (op == 3){
 		result = num1 * num2;
 	}
-	else {
+	else if (op == 4){
 		result = num1 / num2;
+	}
+	else {
+		printf("잘못된 값\n");
+		return 0;
 	}
 
 	printf(" 값 : %lf", result);
