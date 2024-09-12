@@ -12,9 +12,9 @@ int main() {
 	scanf_s("%d", &op);
 
 	printf("첫 번째 수 : ");
-	scanf_s("%d", &num1);
+	scanf_s("%lf", &num1);
 	printf("두 번째 수 : ");
-	scanf_s("%d", &num2);
+	scanf_s("%lf", &num2);
 
 	if (op == 1) {
 		result = num1 + num2;
@@ -29,7 +29,7 @@ int main() {
 		result = num1 / num2;
 	}
 
-	printf(" 값 : %d", result);
+	printf(" 값 : %lf", result);
 
 	return 0;
 }
