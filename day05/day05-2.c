@@ -2,42 +2,39 @@
 #include <stdlib.h>
 
 typedef struct {
-    int snum;       // ÇĞ¹ø
-    char name[100]; // ÀÌ¸§
-    int score;     // Á¡¼ö
+    int snum;       
+    char name[100]; 
+    int score;     
 } Student;
 
 int main(void) {
     int N;
     Student* students;
 
-    printf("ÇĞ»ı ¼ö ÀÔ·Â: ");
-    if (scanf_s("%d", &N) != 1 || N <= 0) {
-        fprintf(stderr, "Àß¸øµÈ ÀÔ·Â. ¾çÀÇ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.\n");
-        return 1;
-    }
+    printf("í•™ìƒ ìˆ˜ ì…ë ¥: ");
+    
 
     students = (Student*)malloc(N * sizeof(Student));
     if (!students) {
-        fprintf(stderr, "¸Ş¸ğ¸® ÇÒ´ç ½ÇÆĞ.\n");
+        fprintf(stderr, "ë©”ëª¨ë¦¬ í• ë‹¹ ì‹¤íŒ¨.\n");
         return 1;
     }
 
     for (int i = 0; i < N; i++) {
-        printf("ÇĞ¹ø: ");
+        printf("í•™ë²ˆ: ");
         scanf_s("%d", &students[i].snum);
-        printf("ÀÌ¸§: ");
-        scanf_s("%99s", students[i].name); // Limit input to avoid buffer overflow
-        printf("Á¡¼ö: ");
+        printf("ì´ë¦„: ");
+        scanf_s("%99s", students[i].name);
+        printf("ì ìˆ˜: ");
         scanf_s("%d", &students[i].score);
     }
 
-    printf("\nÇĞ»ı ¸ñ·Ï:\n");
+ 
     for (int i = 0; i < N; i++) {
         printf("%d %s %d\n", students[i].snum, students[i].name, students[i].score);
     }
 
-    free(students); // Free allocated memory
+    free(students);
 
     return 0;
 }
