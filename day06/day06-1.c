@@ -4,12 +4,16 @@
 struct NODE {
 	int data;
 	struct NODE* link;
-}
+};
 
 struct NODE* head = NULL;
 
 struct NODE* create_node(int data) {
+	struct NODE* new_node = (struct NODE*)malloc(sizeof(struct NODE));
+	new_node->data = data;
+	new_node->link = NULL;
 
+	return new_node;
 }
 
 struct NODE* last_node() {
@@ -17,6 +21,7 @@ struct NODE* last_node() {
 	while (cur->link != NULL) {
 		cur = cur->link;
 	}
+	return cur;
 }
 
 void print_nodes() {
@@ -27,12 +32,22 @@ void print_nodes() {
 	}
 }
 
-void insert_node_last(struct NODE* new_node) {
-	struct NODE* last = last_node();
-	last->link = new_node();
+struct NODE* find_node(int value) {
+	struct NODE* cur = head->link;
+	while (cur != NULL) {
+		if (cur->data == value)
+			return cur;
+		cur = cur->link;
+	}
+	return NULL;
 }
 
-void delete_node(int value) {
+void insert_node_last(struct NODE* new_node) {
+	struct NODE* last = last_node();
+	last->link = new_node;
+}
+
+int delete_node(int value) {
 	struct NODE* prev = head;
 	struct NODE* cur = head->link;
 
@@ -45,6 +60,7 @@ void delete_node(int value) {
 		prev = cur;
 		cur = cur->link;
 	}
+	return 0;
 }
 
 
@@ -53,6 +69,7 @@ void delete_node(int value) {
 int main(){
 	head = (struct NODE*)malloc(sizeof(struct NODE));
 	head->link = NULL;
+
 
 	insert_node_last(create_node(1));
 	insert_node_last(create_node(2));
