@@ -25,7 +25,7 @@ int main(void) {
             for (cnt = 0; cnt < (double)count / total_points * 20; cnt++) {
                 printf("бс");                
             }
-            for (cnt = 20; cnt > (double)count / total_points * 20; cnt--) {
+            for (cnt = 20; cnt >= (double)count / total_points * 20; cnt--) {
                 printf("бр");
             }
             printf("\n");
