@@ -68,5 +68,4 @@ void movePointer(void* array) {
 		x = new_x;
 		y = new_y;
 	}
-	
 }
