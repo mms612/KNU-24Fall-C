@@ -50,7 +50,7 @@ struct NODE* find_node(int value) {
 struct NODE* find_node_insert(int score) {
 	struct NODE* prev = head;
 	struct NODE* cur = head->link;
-	if (cur == NULL) return head; // 첫번째 노드
+	if (cur == NULL) return head;
 	while (cur != NULL) {
 		if (cur->score >= score) {
 			if (cur->link == NULL) return cur;
@@ -125,7 +125,7 @@ int main() {
 			iteration = 0;
 			break;
 		}
-
+		
 		print_nodes();
 	}
 	return 0;
