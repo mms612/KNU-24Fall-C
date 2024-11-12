@@ -3,8 +3,8 @@
 #define NAME_MAX (50)
 
 struct NODE {
-	char name[NAME_MAX];
-	int score;
+	char customerName[NAME_MAX];
+	int rank;
 	struct NODE* link;
 };
 
@@ -12,8 +12,8 @@ struct NODE* head = NULL;
 
 struct NODE* create_node(char* name, int score) {
 	struct NODE* new_node = (struct NODE*)malloc(sizeof(struct NODE));
-	strcpy_s(new_node->name, NAME_MAX, name);
-	new_node->score = score;
+	strcpy_s(new_node->customerName, NAME_MAX, name);
+	new_node->rank = score;
 	new_node->link = NULL;
 
 	return new_node;
@@ -31,7 +31,7 @@ void print_nodes() {
 	struct NODE* cur = head->link;
 	printf("--------------------\n");
 	while (cur != NULL) {
-		printf("%s : %d\n", cur->name, cur->score);
+		printf("%s : %d\n", cur->customerName, cur->rank);
 		cur = cur->link;
 	}
 	printf("--------------------\n");
@@ -40,7 +40,7 @@ void print_nodes() {
 struct NODE* find_node(int value) {
 	struct NODE* cur = head->link;
 	while (cur != NULL) {
-		if (cur->score == value)
+		if (cur->rank == value)
 			return cur;
 		cur = cur->link;
 	}
@@ -52,7 +52,7 @@ struct NODE* find_node_insert(int score) {
 	struct NODE* cur = head->link;
 	if (cur == NULL) return head;
 	while (cur != NULL) {
-		if (cur->score >= score) {
+		if (cur->rank >= score) {
 			if (cur->link == NULL) return cur;
 			prev = cur;
 			cur = cur->link;
@@ -65,7 +65,7 @@ struct NODE* find_node_insert(int score) {
 }
 
 void insert_node_priority(struct NODE* new_node) {
-	struct NODE* n = find_node_insert(new_node->score);
+	struct NODE* n = find_node_insert(new_node->rank);
 	new_node->link = n->link;
 	n->link = new_node;
 }
@@ -75,7 +75,7 @@ int delete_node(char* name) {
 	struct NODE* cur = head->link;
 
 	while (cur != NULL) {
-		if (strcmp(name, cur->name) == 0) {
+		if (strcmp(name, cur->customerName) == 0) {
 			prev->link = cur->link;
 			free(cur);
 			return 1;
