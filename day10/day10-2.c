@@ -4,11 +4,10 @@
 
 #define NAME_MAX (50)
 
-// 등급을 enum으로 정의
 typedef enum {
-    HIGH = 1,  // 1등급
-    MEDIUM,    // 2등급
-    LOW        // 3등급
+    HIGH = 1,  
+    MEDIUM,    
+    LOW       
 } Rank;
 
 struct NODE {
@@ -87,25 +86,22 @@ int delete_node(char* name) {
     return 0;
 }
 
-// 고객 정보 수정 함수
 int update_node(char* name, Rank new_rank, int new_order_amount, int new_point) {
     struct NODE* prev = head;
     struct NODE* cur = head->link;
 
     while (cur != NULL) {
         if (strcmp(name, cur->customerName) == 0) {
-            // 기존 노드 삭제
             prev->link = cur->link;
             free(cur);
 
-            // 수정된 정보로 새로운 노드 삽입
             insert_node_priority(create_node(name, new_rank, new_order_amount, new_point));
-            return 1; // 성공
+            return 1;
         }
         prev = cur;
         cur = cur->link;
     }
-    return 0; // 실패 (해당 고객 없음)
+    return 0;
 }
 
 int main() {
