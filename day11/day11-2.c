@@ -24,13 +24,12 @@ int main() {
 
         // 구분구적법으로 적분 값 계산
         for (int j = 0; j < range; j++) {
-            double x = start + j * width; // 직사각형의 왼쪽 x값
-            double height = -log10(1 / x) + sin(x); // 함수값 (높이)
-            result += height * width;  // 넓이를 누적
+            double x = start + j * width; // 직사각형의 x값
+            double y = -log10(1 / x) + sin(x); // 함수값 (높이)
+            result += y * width;  // 넓이를 누적
         }
 
-        // 결과 출력
-        printf("구간 %d적분 값은: %.6lf\n", range, result);
+        printf("구간 %d적분 값은: %.10lf\n", range, result);
 
         result = 0;
     }
